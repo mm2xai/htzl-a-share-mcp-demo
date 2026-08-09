@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  htzl-a-share-mcp:
+    build: .
+    container_name: htzl-a-share-mcp
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - HTZL_USE_MOCK=false
+      - TRANSPORT=streamable-http
+      - HOST=0.0.0.0
+      - PORT=8000
+      - TUSHARE_TOKEN=${TUSHARE_TOKEN:-}
+      - XUEQIU_TOKEN=${XUEQIU_TOKEN:-}
+      - FEISHU_WEBHOOK=${FEISHU_WEBHOOK:-}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
