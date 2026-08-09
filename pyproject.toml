@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "htzl-a-share-mcp"
+version = "0.1.0"
+description = "🔥 慧途智联 A 股 MCP 服务 - 29 skills 即插即用"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "HTZL AI", email = "team@htzl.ai"},
+]
+keywords = ["mcp", "openclaw", "stock", "a-share", "akshare", "tushare", "fastmcp", "ai-agent"]
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=0.4.0",
+    "akshare>=1.16.0",
+    "tushare>=1.4.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "redis>=5.0.0",
+    "requests>=2.31.0",
+    "pybloomfiltermmap3>=0.5.0",
+    "anthropic>=0.40.0",
+    "talib-binary>=0.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "mypy>=1.8.0",
+    "python-semantic-release>=8.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/htzlai/htzl-a-share-mcp"
+Repository = "https://github.com/htzlai/htzl-a-share-mcp"
+Issues = "https://github.com/htzlai/htzl-a-share-mcp/issues"
+
+[project.scripts]
+htzl-a-share-mcp = "htzl_a_share_mcp.server:main"
+
+[tool.semantic_release]
+version_variable = "src/htzl_a_share_mcp/__init__.py:__version__"
+version_toml = ["pyproject.toml:project.version"]
+branch = "main"
+changelog_file = "CHANGELOG.md"
+commit_message = "chore(release): {version} [skip ci]"
+tag_format = "v{version}"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/htzl_a_share_mcp"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
