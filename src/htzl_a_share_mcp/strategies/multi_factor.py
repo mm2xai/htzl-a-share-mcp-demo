@@ -6,15 +6,27 @@ class MultiFactorStrategy:
     """多因子选股策略"""
 
     def calculate_factor_score(self, df: pd.DataFrame, factor: str) -> pd.Series:
-        """计算单个因子得分"""
+        """计算单个因子得分（归一化到 [0, 1]）"""
         if factor == "value":
-            return -df['pe'].rank(pct=True)
+            if 'pe' not in df.columns:
+                return pd.Series(0.5, index=df.index)
+            score = 1 - df['pe'].rank(pct=True, na_option='bottom')
+            return score.fillna(0.5)
         elif factor == "growth":
-            return df['revenue_growth'].rank(pct=True)
+            if 'revenue_growth' not in df.columns:
+                return pd.Series(0.5, index=df.index)
+            score = df['revenue_growth'].rank(pct=True, na_option='bottom')
+            return score.fillna(0.5)
         elif factor == "quality":
-            return df['roe'].rank(pct=True)
+            if 'roe' not in df.columns:
+                return pd.Series(0.5, index=df.index)
+            score = df['roe'].rank(pct=True, na_option='bottom')
+            return score.fillna(0.5)
         elif factor == "momentum":
-            return df['return_20d'].rank(pct=True)
+            if 'return_20d' not in df.columns:
+                return pd.Series(0.5, index=df.index)
+            score = df['return_20d'].rank(pct=True, na_option='bottom')
+            return score.fillna(0.5)
         return df.get(factor, pd.Series(0.5, index=df.index))
 
     def select_stocks(self, df: pd.DataFrame, top_n: int = 30) -> pd.DataFrame:

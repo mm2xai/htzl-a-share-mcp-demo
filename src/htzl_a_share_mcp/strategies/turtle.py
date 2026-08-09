@@ -15,11 +15,11 @@ class TurtleStrategy:
         df = df.copy()
         df['prev_high'] = df['high'].shift(1)
         df['prev_low'] = df['low'].shift(1)
-        df['tr'] = np.maximum(
+        df['tr'] = np.maximum.reduce([
             df['high'] - df['low'],
             np.abs(df['high'] - df['close'].shift(1)),
             np.abs(df['low'] - df['close'].shift(1))
-        )
+        ])
         df['N'] = df['tr'].rolling(self.n_entry).mean()
         df['entry_high'] = df['high'].rolling(self.n_entry).max().shift(1)
         df['entry_low'] = df['low'].rolling(self.n_entry).min().shift(1)
