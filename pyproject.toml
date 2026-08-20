@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "htzl-a-share-mcp"
-version = "0.1.0"
-description = "🔥 慧途智联 A 股 MCP 服务 - 29 skills 即插即用"
+version = "0.8.0"
+description = "🔥 慧途智联 A 股 MCP 服务 - 30 MCP tools 即插即用"
 readme = "README.md"
 license = {text = "Apache-2.0"}
 authors = [

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://docs.openclaw.ai/schemas/agent-plugin/v1.json",
+  "id": "htzl-a-share-mcp",
+  "name": "HTZL A Share MCP",
+  "version": "0.8.0",
+  "description": "🔥 慧途智联 A 股 MCP 服务 — A-share stock market data via MCP protocol (30 tools across 12 categories)",
+  "author": {
+    "name": "htzlai",
+    "url": "https://github.com/mm2xai"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/mm2xai/htzl-a-share-mcp-demo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mm2xai/htzl-a-share-mcp-demo.git"
+  },
+  "engines": {
+    "openclaw": ">=2026.6.1",
+    "python": ">=3.10"
+  },
+  "capabilities": [
+    "mcp-server",
+    "skills"
+  ],
+  "mcpServers": {
+    "htzl-a-share": {
+      "command": "python",
+      "args": ["-m", "htzl_a_share_mcp.server", "--transport", "stdio"],
+      "env": {
+        "HTZL_USE_MOCK": "true"
+      }
+    }
+  },
+  "skills": [
+    {"name": "a-share-daily", "description": "A 股日线数据 (5/10/20/60日 K线)"},
+    {"name": "a-share-realtime", "description": "A 股实时行情（多源故障转移）"},
+    {"name": "turtle-strategy", "description": "海龟交易法信号（20日突破）"},
+    {"name": "limit-up-tracker", "description": "涨停股池 + 连板率"},
+    {"name": "capital-flow", "description": "主力/散户资金流向"},
+    {"name": "financial-reports", "description": "利润表 + 财务指标"},
+    {"name": "valuation", "description": "PE / PB 估值"},
+    {"name": "multi-factor", "description": "多因子选股"},
+    {"name": "backtest", "description": "策略回测（海龟/多因子/对比）"},
+    {"name": "risk-control", "description": "VaR + Kelly 头寸"},
+    {"name": "report-generation", "description": "个股/板块/组合报告"},
+    {"name": "xueqiu-integration", "description": "雪球实时行情 + 组合追踪"}
+  ],
+  "install": {
+    "script": "install.sh",
+    "postInstall": [
+      "echo 'Run: htzl-a-share-mcp stdio'"
+    ]
+  },
+  "topics": [
+    "a-share",
+    "mcp",
+    "openclaw",
+    "claude-code",
+    "agent",
+    "financial-data",
+    "stock"
+  ]
+}

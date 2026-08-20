@@ -3,10 +3,10 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue)](https://www.python.org)
 [![MCP](https://img.shields.io/badge/MCP-1.29%2B-green)](https://modelcontextprotocol.io)
-[![PyPI](https://img.shields.io/badge/PyPI-v0.7.0-blue)](https://pypi.org/project/htzl-a-share-mcp/)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.8.0-blue)](https://pypi.org/project/htzl-a-share-mcp/)
 [![codecov](https://img.shields.io/badge/codecov-95%25-brightgreen)](https://codecov.io)
 
-🔥 **慧途智联 A 股 MCP 服务** —— 29 个即插即用 Skills 覆盖数据采集/大盘分析/资金流向/涨停追踪/技术面/基本面/估值/财报/多因子/回测/风控/智能报告/自选股监控/雪球调仓。**Claude Code / CoWork / OpenClaw / Cherry Studio 首选搭档**。
+🔥 **慧途智联 A 股 MCP 服务** —— 30 个 MCP tools（5 W5 + 25 W6） 覆盖数据采集/大盘分析/资金流向/涨停追踪/技术面/基本面/估值/财报/多因子/回测/风控/智能报告/自选股监控/雪球调仓。**Claude Code / CoWork / OpenClaw / Cherry Studio 首选搭档**。
 
 > A-Share MCP for AI Agents — 5400+ A 股上市公司 · akshare + tushare + 东财双源 · Apache-2.0
 
@@ -16,7 +16,7 @@
 
 让 Claude / GPT / Gemini 等 AI Agent 直接调用 A 股数据分析和策略工具：
 
-- ✅ **29 个即插即用 Skills** —— 一行 `pip install` 启用全部能力
+- ✅ **30 个 MCP tools（5 W5 + 25 W6）** —— 一行 `pip install` 启用全部能力
 - ✅ **多源故障转移** —— akshare → tushare → mock 三层兜底
 - ✅ **雪球集成** —— pysnowball 1,825⭐ Apache-2.0 底层
 - ✅ **Claude Code 友好** —— stdio 模式即插即用
@@ -68,7 +68,7 @@ python -m htzl_a_share_mcp.server --transport streamable-http --host 0.0.0.0 --p
 
 ---
 
-## 📊 29 Skills 全景
+## 📊 30 MCP Tools 全景
 
 ### 数据层 (5)
 - `get_stock_daily` - A 股日线数据（多源故障转移）
@@ -135,7 +135,7 @@ python -m htzl_a_share_mcp.server --transport streamable-http --host 0.0.0.0 --p
                      │ MCP Protocol
 ┌────────────────────▼────────────────────────────────────┐
 │  HTZL A Share MCP Server (FastMCP 3.4)                  │
-│  29 Skills (data + strategies + community + push)        │
+│  30 Tools (data + strategies + community + push)        │
 └────┬─────────┬─────────┬─────────────┬──────────────────┘
      │         │         │             │
 ┌────▼───┐ ┌──▼────┐ ┌──▼────────┐ ┌──▼─────────┐
@@ -221,7 +221,7 @@ Apache-2.0 © [htzl.ai](https://htzl.ai)
 
 ## 🗺️ Roadmap
 
-- **v0.7 (2026-11-01)** — 当前 MVP，29 skills，9 大类 ✅
+--- 整段重写 ---
 - **v0.8 (2027-02)** — 36 skills，多市场（港股/美股）
 - **v0.9 (2027-05)** — 42 skills，LLM 增强选股
 - **v1.0 (2027-11)** — 50+ skills，社区化，目标 1,000⭐
