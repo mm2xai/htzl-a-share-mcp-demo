@@ -170,6 +170,28 @@ L3 决策支持 (~5 模块) = dashboard web UI + signal_data 系列
 ### R850（19:42 已完成）— 本文档
 ### R851（20:12）— 加 Cache 层 + baostock 降级
 ### R852（20:42）— 加 4 个新模块：concept / dragon_tiger / northbound / hot_money
+
+### R851-R854 实际进展（执行完毕）
+
+| 阶段 | 状态 | 关键产出 |
+|---|---|---|
+| R851 utils/cache.py | ✅ 7d522c3 | 204 行，5 TTL 预设，2 级缓存，8/8 测试 |
+| R852 baostock 降级 | ✅ 7f33fab | 162 行，L1-L3 梯队，pyproject 加 baostock>=0.9.0，8/8 测试 |
+| R853 registry 重构 | ✅ 9c6810c | tools/registry.py 128 行 + data_tools.py 93 行，6/6 测试 |
+| R854 4 新工具 stub | ✅ b0694fb | concept_tools.py 114 行，工具数 30 → 34，4/4 测试 |
+| R855 数据源看板 | ⏸️ 跳过 | 22:00 暂停窗口 |
+
+**总测试数：** 163 → 193（+30 测试）
+
+**工具数：** 30 → 34（+4 题材/龙虎榜/北向/游资 data_tools.py 加 4 个 @register_tool 装饰器）
+
+**源码：**
+- src/htzl_a_share_mcp/utils/cache.py
+- src/htzl_a_share_mcp/data_sources/baostock_source.py
+- src/htzl_a_share_mcp/tools/registry.py
+- src/htzl_a_share_mcp/tools/data_tools.py
+- src/htzl_a_share_mcp/tools/concept_tools.py
+
 ### R853（21:12）— 拆分 server.py 重构为 registry 模式
 ### R854（21:42）— 数据源看板 web UI
 ### R855（22:12 之后暂停）— PyPI v0.8.0 发布准备
