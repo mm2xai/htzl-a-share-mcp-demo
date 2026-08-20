@@ -7,6 +7,7 @@ tools/data_tools.py — 数据获取类工具（L1）
 from typing import Optional
 from ..data_sources import create_default_failover
 from ..utils.cache import get_cache, TTL_DAILY, TTL_REALTIME
+from .registry import register_tool
 
 
 # 全局 failover（模块级别单例）
@@ -27,8 +28,9 @@ def _get_failover():
     return _failover
 
 
-# === 工具实现（直接 def，server.py 中挂装饰器）===
+# === 工具实现（注册表装饰器 + register 函数双轨制）===
 
+@register_tool("L1-数据获取", "获取 A 股日线数据（多源故障转移）")
 def get_stock_daily(symbol: str, start: str, end: str) -> list:
     """获取 A 股日线数据（多源故障转移）"""
     cache = get_cache()
@@ -42,6 +44,7 @@ def get_stock_daily(symbol: str, start: str, end: str) -> list:
     return data
 
 
+@register_tool("L1-数据获取", "获取 A 股实时行情（多源故障转移）")
 def get_stock_realtime(symbol: str) -> dict:
     """获取 A 股实时行情（多源故障转移）"""
     cache = get_cache()
@@ -54,6 +57,7 @@ def get_stock_realtime(symbol: str) -> dict:
     return data
 
 
+@register_tool("L1-数据获取", "通过雪球获取实时行情（需要 token）")
 def get_xueqiu_quote(symbol: str) -> dict:
     """通过雪球获取实时行情（需要 token）"""
     import os
@@ -68,6 +72,7 @@ def get_xueqiu_quote(symbol: str) -> dict:
     }
 
 
+@register_tool("L1-通知", "推送消息到飞书（需要 webhook）")
 def push_to_feishu(message: str) -> dict:
     """推送消息到飞书（需要 webhook）"""
     import os
